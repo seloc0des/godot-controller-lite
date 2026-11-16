@@ -1,13 +1,15 @@
 # Controller (Lite)
 
-Free no-code player movement for **Godot 4.5+**. A top-down 8-way mover with
-acceleration/friction, press-E signs and NPCs that show a prompt and a message,
-and a player who stands still while a Dialogue conversation is on screen. All of
-it is baked onto any node from the editor chooser dock.
+Free no-code player movement for **Godot 4.5+**, in 2D and in 3D. A top-down
+mover with acceleration/friction, press-E signs and NPCs that show a prompt and a
+message, a follow camera for 3D, and a player who stands still while a Dialogue
+conversation is on screen. All of it is baked onto any node from the editor
+chooser dock.
 
-Free Lite tier of the SELODEV **Controller** addon. Pro adds the platformer
-mover (coyote time, jump buffer, variable jump height), the follow camera
-(deadzone, look-ahead, shake), and touch-friendly public input methods.
+Free Lite tier of the SELODEV **Controller** addon. Pro adds the platformer mover
+and the 3D third-person mover (coyote time, jump buffer, variable jump height),
+the 2D follow camera and the 3D orbit camera (deadzone, look-ahead, shake, mouse
+look), and touch-friendly public input methods.
 
 ## 5-minute setup
 
@@ -22,6 +24,18 @@ mover (coyote time, jump buffer, variable jump height), the follow camera
    **Make Interactable**. Press Play and walk up to it: "E  Read" shows above it,
    and pressing E shows your message.
 
+In a 3D scene the same dock builds the 3D version. Open a scene whose top node is
+a Node3D and the buttons change:
+
+1. Select any node (or a mesh or model you want to play as) and click **Make
+   Player**. The dock builds a CharacterBody3D called Player (a capsule with an
+   orange nose so you can see which way it faces), the 3D mover, an Interactor in
+   front of it, and a **FollowCamera** at the top of the scene.
+2. Add a floor (a StaticBody3D with a collision shape) and press Play. WASD or
+   the arrows move it, relative to the camera.
+3. **Add Interactor** and **Make Interactable** work the same way. A 3D
+   Interactable floats its own "E  Read" prompt above itself.
+
 With Dialogue (Lite or Pro) in the project, the player stands still while a
 conversation is on screen, and E does nothing until it ends. Untick **Freeze
 During Dialogue** on the mover to let the player walk during one.
@@ -35,6 +49,13 @@ During Dialogue** on the mover to let the player walk during one.
   The nearest one in reach shows "E  Use" above itself (`prompt_text`), using
   shows `message` on screen, and the `event` string is mirrored on the bus for
   your own code.
+- `TopDownMoverLite3D`: the same mover for a CharacterBody3D, in metres per
+  second. It moves relative to the camera, turns the body to face where it goes,
+  walks up steps and ramps, falls off ledges, and saves position and facing.
+- `InteractorLite3D` / `InteractableLite3D` (Area3D): the same pair for 3D, with
+  a floating "E  Use" prompt.
+- `FollowCameraLite3D`: a fixed-angle camera that follows the player smoothly and
+  snaps when the player is teleported (a door, a respawn).
 - `ControllersLite` autoload: player registry, `interacted`, reason-counted
   `lock_movement("dialogue")` / `unlock_movement`.
 - **Chooser dock**: bake a player, an interactor, or an interactable onto the

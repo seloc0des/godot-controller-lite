@@ -1,7 +1,8 @@
 # Quick Start: Controller (Lite)
 
 Goal: a playable top-down character and a sign that shows "E  Read" when you
-walk up and a message when you press E, with no code.
+walk up and a message when you press E, with no code. The steps below are for 2D.
+For 3D, jump to **3D** at the end of this page.
 
 ## 1. Install
 
@@ -62,8 +63,33 @@ ControllersLite.lock_movement(&"cutscene")    # cutscene starts
 ControllersLite.unlock_movement(&"cutscene")  # cutscene ends
 ```
 
+## 3D
+
+Same goal in a 3D scene. The top node of your scene has to be a Node3D (a plain
+Node3D is fine). The dock checks that when you click, and builds the 3D version.
+
+- In the **Controller Lite** dock, set **Move speed (m/s)** (5 is a brisk run).
+- Select any node, or a mesh or model you want to play as, and click **Make
+  Player**. You get a CharacterBody3D called `Player` with a collision shape, the
+  mover, an Interactor in front of it, and a **FollowCamera** at the top of the
+  scene. Without art of your own it is a blue capsule with an orange nose, so you
+  can see which way it faces. A selected mesh or model goes inside the new Player
+  and takes its place.
+- Give the level a floor: a StaticBody3D with a collision shape. The Player has
+  gravity and falls through anything that cannot hold it up.
+- Press Play. WASD or the arrows move it, relative to the camera. Steps up to 30
+  cm and ramps up to 45 degrees are walked straight up, and ledges are fallen
+  off.
+- Select the Player, click **Add Interactor**. Select a prop, type a **Prompt
+  text** and a **Message when used**, click **Make Interactable**. It gets a box
+  shape a metre and a half wide and floats "E  Read" above itself while the
+  player is in reach.
+- The dock only adds a FollowCamera when the scene has no camera. A 3D game with
+  no camera shows nothing, so if you delete it, add a Camera3D or a
+  FollowCameraLite3D by hand.
+
 ## Next
 
-Platformer movement (coyote time, jump buffer, variable jump), the follow
-camera, button prompts that switch between keyboard and pad, and touch input
-methods → **upgrade.md**.
+Platformer and third-person movement (coyote time, jump buffer, variable jump),
+the 2D follow camera and the 3D orbit camera, button prompts that switch between
+keyboard and pad, and touch input methods → **upgrade.md**.

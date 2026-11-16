@@ -33,9 +33,18 @@ func _enter_tree() -> void:
 	# the moment the dock is added, before _ready has run.
 	_dock.name = "Controller Lite"
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL, _dock)
+	scene_changed.connect(_on_scene_changed)
+
+
+# The dock offers 3D or 2D builds by the open scene's root.
+func _on_scene_changed(_root: Node) -> void:
+	if _dock != null:
+		_dock.call("refresh_mode")
 
 
 func _exit_tree() -> void:
+	if scene_changed.is_connected(_on_scene_changed):
+		scene_changed.disconnect(_on_scene_changed)
 	if _dock != null:
 		remove_control_from_docks(_dock)
 		_dock.queue_free()

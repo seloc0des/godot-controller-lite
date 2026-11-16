@@ -1,5 +1,30 @@
 # Changelog: Controller (Lite)
 
+## 1.3.0 (2026-10-23)
+
+Controller (Lite) works in 3D. Every 2D node keeps its behaviour and its fields.
+
+- **`TopDownMoverLite3D`.** Ground movement for a CharacterBody3D, in metres per second. It moves
+  relative to the active camera (or toward -Z with `world_relative`), turns the body to face where
+  it goes, walks up steps and ramps, falls off ledges, stands still during a Dialogue conversation
+  and honours movement locks. It saves x, y, z and facing.
+- **`InteractorLite3D` and `InteractableLite3D`.** The Area3D twins of the 2D pair, with the same
+  fields and the same on-screen message. The 3D Interactable floats its own "E  Use" prompt above
+  itself while the player is in reach.
+- **`FollowCameraLite3D`.** A fixed-angle camera that follows the player smoothly. A 3D game with
+  no camera shows nothing, so Lite has this one. A teleport (a door, a respawn: any move in
+  one frame longer than the player's own speed explains, plus `snap_distance`) snaps it instead of
+  swooping. Orbit, shake and look-ahead are in Pro.
+- **The chooser dock builds the 3D versions in a 3D scene.** With a Node3D at the top of the
+  scene, **Make Player** builds a capsule Player with a nose so facing shows, the mover, an
+  Interactor and a FollowCamera, all as one undo step. A selected mesh or model goes inside the new
+  Player. **Add Interactor** and **Make Interactable** have 3D versions. A scene whose top node is
+  a Node2D behaves exactly as before. A plain Node at the top follows the node you have
+  selected: a Node3D means 3D, anything else means 2D.
+- **Fixes.** An Interactor no longer prints two errors every time another kind of Area leaves its
+  reach (this was also true of the 2D Interactor).
+- **A 3D demo.** `demo/controller_demo_3d.tscn` has a ramp, steps, a crate, a sign and a chest.
+
 ## 1.2.3 (2026-10-12)
 
 The tabs show their names on Godot 4.5.
@@ -102,19 +127,19 @@ The movement actions are the pack's own now, so a settings menu can rebind them.
   plus WASD, the left stick and E. Anything you typed in yourself is stored in your scene
   and left alone. The one thing that changes is that Space no longer interacts.
 
-## 1.0.2 — 2026-08-10
+## 1.0.2 (2026-08-10)
 
 A quieter first run. No change to how anything behaves.
 
 - **The debugger no longer fills with warnings when you press Play.** The event bus declares the signals every system talks through, and Godot flagged each one as unused because the code that sends and receives them lives in the other files. Nothing was broken, but a first run could print a stack of warnings that looked like your mistakes. They're gone.
 
-## 1.0.1 — 2026-08-10
+## 1.0.1 (2026-08-10)
 
 Safer download.
 
 - **The download can't damage a project you're already working on.** It now unzips into one folder named after the pack, instead of putting files loose at the top. Before this, unzipping it straight into an existing game overwrote that game's name, its start-up scene and the list of add-ons you had switched on. It can't reach any of that now.
-- **Added START-HERE.txt and INSTALLING.txt** at the top of the folder — what's in the download, the two-minute install, and what to do if something goes wrong. Plain text, opens anywhere.
-- **Fixed: the docs pointed at a self-test file that wasn't there.** They said `tools/verify.tscn`; in the download it's `tools/controller_lite/verify.tscn`. The paths now match what's actually in the box.
+- **Added START-HERE.txt and INSTALLING.txt** at the top of the folder: what's in the download, the two-minute install, and what to do if something goes wrong. Plain text, opens anywhere.
+- **Fixed: the docs pointed at a self-test file that wasn't there.** They said `tools/verify.tscn`, and in the download it's `tools/controller_lite/verify.tscn`. The paths now match what's actually in the box.
 
 ## 1.0.0
 
