@@ -21,7 +21,6 @@ right and cameras behave.
 | Camera look-ahead + shake() | — | ✅ |
 | Public jump()/release_jump() for touch buttons | — | ✅ |
 
-Your Lite scenes carry forward — Pro's mover and bus use the same patterns, and
-the Pro dock bakes onto the same bodies.
+Lite scenes keep working while Controller (Lite) stays installed. The full mover and interactable keep the Lite settings, signals and methods under the same names, apart from the interactable's `prompt_text`, with new class names (`ControllerTopDownMover`, `ControllerInteractable`) and the `Controllers` autoload. The full dock bakes onto the same bodies.
 
 Get it on itch.io. MIT-licensed; use it in commercial projects.
