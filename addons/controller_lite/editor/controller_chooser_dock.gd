@@ -2,7 +2,7 @@
 extends Control
 
 # No-code chooser dock (Lite). Select a node, one click makes it a playable
-# top-down character or an interactable prop. Pro adds the platformer mover and
+# top-down character or an interactable prop. The full version adds the platformer mover and
 # the follow camera. Open a scene whose root is a Node3D and the same buttons
 # build the 3D versions instead (a CharacterBody3D, a capsule, the 3D mover and
 # a follow camera).
@@ -96,7 +96,7 @@ func _build() -> void:
 
 	var pro := Label.new()
 	pro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	pro.text = "Pro unlocks: platformer mover and third-person mover (coyote time, jump buffer, variable jump), follow camera (deadzone, look-ahead, shake, orbit), button prompts that switch between keyboard and pad, touch-input methods."
+	pro.text = "The full version unlocks: platformer mover and third-person mover (coyote time, jump buffer, variable jump), follow camera (deadzone, look-ahead, shake, orbit), button prompts that switch between keyboard and pad, touch-input methods."
 	pro.add_theme_color_override("font_color", Color(0.62, 0.66, 0.78))
 	v.add_child(pro)
 

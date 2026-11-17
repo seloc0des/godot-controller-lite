@@ -20,7 +20,7 @@ signal stopped_moving
 @export var input_enabled: bool = true
 @export var is_player: bool = true           ## joins the "player" group + registers on the bus
 @export var save_id: String = ""             ## set to persist position via the Save addon
-## Stands still while a Dialogue (Lite or Pro) conversation is on screen.
+## Stands still while a Dialogue (Lite or full) conversation is on screen.
 @export var freeze_during_dialogue: bool = true
 
 var _body: CharacterBody2D = null
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	_flag_moving(_body.velocity.length_squared() > 1.0)
 
 
-# Dialogue Lite or Pro, asked through the bus, so neither pack is needed
+# Dialogue Lite or full, asked through the bus, so neither pack is needed
 func _talking() -> bool:
 	return freeze_during_dialogue and _controllers_lite().in_dialogue()
 

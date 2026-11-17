@@ -49,7 +49,7 @@ ControllersLite.interacted.connect(func(ia, by):
 
 ## 4. Freeze during dialogue
 
-With Dialogue (Lite or Pro) installed, the player stands still while a
+With Dialogue (Lite or full) installed, the player stands still while a
 conversation is on screen and walks again when it ends, and pressing E does
 nothing until then, so it can't start something else behind the dialogue box.
 The "E  Read" prompt steps aside for the conversation too.

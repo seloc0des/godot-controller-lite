@@ -23,8 +23,7 @@ const DIALOGUE_MANAGERS := ["/root/DialoguesLite", "/root/DialogueManager"]
 ## but no settings menu will ever let a player rebind them: a rebinding UI has
 ## to keep ui_* off limits or one stray keypress in the rebind screen leaves the
 ## player unable to navigate the menu they are standing in. Naming them here
-## fixes both halves at once. Same names as the Pro pack, so upgrading changes
-## nothing.
+## fixes both halves at once. Same names as the full pack.
 const DEFAULT_ACTIONS := {
 	&"move_left": {"keys": [KEY_A, KEY_LEFT], "axis": [JOY_AXIS_LEFT_X, -1.0]},
 	&"move_right": {"keys": [KEY_D, KEY_RIGHT], "axis": [JOY_AXIS_LEFT_X, 1.0]},
@@ -97,7 +96,7 @@ func register_player(body: Node) -> void:
 	player_registered.emit(body)
 
 
-## True while a Dialogue (Lite or Pro) conversation is on screen. Looked up by
+## True while a Dialogue (Lite or full) conversation is on screen. Looked up by
 ## name each time, so neither pack is needed; both managers answer is_active().
 func in_dialogue() -> bool:
 	for path in DIALOGUE_MANAGERS:

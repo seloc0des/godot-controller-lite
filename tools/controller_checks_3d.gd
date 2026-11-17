@@ -333,7 +333,7 @@ static func run_physics(host: Node) -> Dictionary:
 	ramp.queue_free()
 	await _wait(tree, 0.5)
 
-	# stands still while a conversation runs, Lite or Pro
+	# stands still while a conversation runs, Lite or full
 	for manager: String in ["DialoguesLite", "DialogueManager"]:
 		var stub: Node = C._dialogue_stub(tree.root, manager)
 		if stub == null:

@@ -6,7 +6,7 @@ message, a follow camera for 3D, and a player who stands still while a Dialogue
 conversation is on screen. All of it is baked onto any node from the editor
 chooser dock.
 
-Free Lite tier of the SELODEV **Controller** addon. Pro adds the platformer mover
+Free Lite tier of the SELODEV **Controller** addon. The full version adds the platformer mover
 and the 3D third-person mover (coyote time, jump buffer, variable jump height),
 the 2D follow camera and the 3D orbit camera (deadzone, look-ahead, shake, mouse
 look), and touch-friendly public input methods.
@@ -36,7 +36,7 @@ a Node3D and the buttons change:
 3. **Add Interactor** and **Make Interactable** work the same way. A 3D
    Interactable floats its own "E  Read" prompt above itself.
 
-With Dialogue (Lite or Pro) in the project, the player stands still while a
+With Dialogue (Lite or full) in the project, the player stands still while a
 conversation is on screen, and E does nothing until it ends. Untick **Freeze
 During Dialogue** on the mover to let the player walk during one.
 
@@ -44,7 +44,7 @@ During Dialogue** on the mover to let the player walk during one.
 
 - `TopDownMoverLite`: 8-way movement, acceleration/friction (0 = instant),
   remappable actions, save-aware position (`save_id`). Stands still during a
-  Dialogue Lite or Pro conversation (`freeze_during_dialogue`).
+  Dialogue Lite or full conversation (`freeze_during_dialogue`).
 - `InteractorLite` / `InteractableLite`: nearest-target press-E interaction.
   The nearest one in reach shows "E  Use" above itself (`prompt_text`), using
   shows `message` on screen, and the `event` string is mirrored on the bus for

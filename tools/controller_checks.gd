@@ -126,7 +126,7 @@ static func run_physics(host: Node) -> Dictionary:
 	ok = _chk(lines, is_zero_approx(td_body.velocity.x), "friction brakes to a stop") and ok
 	td_body.queue_free()
 
-	# --- stands still while a Dialogue conversation runs, Lite or Pro ---
+	# --- stands still while a Dialogue conversation runs, Lite or full ---
 	for manager in ["DialoguesLite", "DialogueManager"]:
 		var stub: Node = _dialogue_stub(tree.root, manager)
 		if stub == null:

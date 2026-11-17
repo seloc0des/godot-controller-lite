@@ -1,10 +1,10 @@
-# Upgrading to Controller (Pro)
+# Upgrading to the full Controller
 
 Controller (Lite) is the free core: top-down movement in 2D and 3D, press-E
-interaction, a 3D follow camera, and movement locks. **Controller (Pro)** adds the
+interaction, a 3D follow camera, and movement locks. **The full Controller** adds the
 parts that make platformers and third-person games feel right and cameras behave.
 
-| | Lite (free) | Pro |
+| | Lite (free) | Full |
 |---|---|---|
 | Top-down 8-way mover (accel/friction) | ✅ | ✅ |
 | Top-down mover in 3D (camera-relative, steps, ramps) | ✅ | ✅ |
